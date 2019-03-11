@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include "simulateur.h"
 #include "consigne.h"
+#include "visualisationT.h"
 
 #define CONSIGNE 0
 
@@ -10,11 +11,14 @@ int main(){
 	csgn = consigne(CONSIGNE);	// Appel à la fonction consigne pour récuperer la valeur de la consigne du fichier consigne
 	printf("Valeur de la consigne : %.2f \n", csgn);
 
-
+	
 
 	temp_t temperature;
-	temperature.exterieure = 14.0;
+	temperature.exterieure = 120.0;
 	temperature.interieure = 15.0;
+
+	visualisationT(temperature);
+
 	struct simParam_s*  monSimulateur_ps = simConstruct(temperature); // creation du simulateur, puissance intialis�e � 0%
 	int i=0; // increment de boucle
 	float puissance = 70.0; // puissance de chauffage

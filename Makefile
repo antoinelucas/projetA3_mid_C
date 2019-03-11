@@ -1,5 +1,5 @@
 CC=gcc
-EXEC=project3a
+EXEC=chauffage.exe
 SRC=$(wildcard *.c)
 OBJ=$(SRC:.c=.o)
 LDFLAGS= 

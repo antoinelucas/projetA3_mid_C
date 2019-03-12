@@ -8,8 +8,35 @@
 
 int main(){
 	float csgn = 0;
+	char verif = ' ';
 	csgn = consigne(CONSIGNE);	// Appel à la fonction consigne pour récuperer la valeur de la consigne du fichier consigne
 	printf("Valeur de la consigne : %.2f \n", csgn);
+
+	FILE* myfile = fopen("trace.txt", "r");
+	int ch, number_of_lines = 0;
+
+	do {
+    	ch = fgetc(myfile);
+		verif = fgetc(myfile);
+    	if(ch == '\n')
+        	number_of_lines++;
+		if(verif=="false")
+			verif="false";
+		else if(verif=="true")
+			verif="true";
+	} while (ch != EOF);
+
+	// last line doesn't end with a new line!
+	// but there has to be a line at least before the last line
+	if(ch != '\n' && number_of_lines != 0) 
+    	number_of_lines++;
+
+	fclose(myfile);
+
+	printf("number of lines in test.txt = %d\n", number_of_lines);
+	printf("Value of verif : %d\n",verif);
+
+	
 
 	
 

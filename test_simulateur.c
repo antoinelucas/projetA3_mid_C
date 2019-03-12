@@ -10,11 +10,11 @@
 
 int main(){
 	float csgn = 0;
-	char verif = ' ';
+	//char verif = ' ';
 	csgn = consigne(CONSIGNE);	// Appel à la fonction consigne pour récuperer la valeur de la consigne du fichier consigne
 	printf("Valeur de la consigne : %.2f \n", csgn);
 
-	FILE* myfile = fopen("trace.txt", "r");
+	/*FILE* myfile = fopen("trace.txt", "r");
 	int ch, number_of_lines = 0;
 
 	do {
@@ -38,13 +38,13 @@ int main(){
 	printf("number of lines in test.txt = %d\n", number_of_lines);
 	printf("Value of verif : %d\n",verif);
 
-	
+	*/
 
 	
 
 	temp_t temperature;
-	temperature.exterieure = 30.0;
-	temperature.interieure = 40.0;
+	temperature.exterieure = 10.0;
+	temperature.interieure = 12.0;
 
 	visualisationT(temperature);
 
@@ -52,7 +52,7 @@ int main(){
 	int i=0; // increment de boucle
 	float puissance = 10.0; // puissance de chauffage
 
-	visualisationC(puissance);
+	//visualisationC(puissance);
 
 	for(i=0;i< 30;i++){
 		temperature=simCalc(puissance,monSimulateur_ps); // simulation de l'environnement

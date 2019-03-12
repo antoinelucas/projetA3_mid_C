@@ -14,7 +14,7 @@ void visualisationT(temp_t myTemp){
         }else{
             verrouFile = fopen(".verrouData", "w");
        
-            fichier = fopen("data.txt", "r"); // Permet d'ouvrir le fichier data.txt
+            fichier = fopen("data.txt", "w+"); // Permet d'ouvrir le fichier data.txt
             printf("Erreur8");
             //if (fichier != NULL){
                 fscanf(fichier, "%f", &tempExt);

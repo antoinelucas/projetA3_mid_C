@@ -1,7 +1,5 @@
 #include "visualisationT.h"
 #include <unistd.h>
-#include <stdio.h>
-#include <stdlib.h>
 
 void visualisationT(temp_t myTemp){
     FILE *fichier, *verrouFile = NULL;

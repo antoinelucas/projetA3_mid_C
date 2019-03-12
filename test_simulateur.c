@@ -4,6 +4,7 @@
 #include "consigne.h"
 #include "visualisationT.h"
 #include "visualisationC.h"
+#include "define.h"
 
 #define CONSIGNE 0
 
@@ -15,8 +16,8 @@ int main(){
 	
 
 	temp_t temperature;
-	temperature.exterieure = 120.0;
-	temperature.interieure = 15.0;
+	temperature.exterieure = 80.0;
+	temperature.interieure = 20.0;
 
 	visualisationT(temperature);
 

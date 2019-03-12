@@ -11,13 +11,10 @@ void visualisationC(float puissance_f){
       fichier = fopen("data.txt", "a");         // Permet d'ouvrir le fichier data.txt
 
       if (fichier != NULL){
-         printf("ok5\n");
          if(puissance_f == 0){
-            printf("ok6\n");
             fprintf(fichier, "false");
          }else if(puissance_f > 0){
-            printf("ok7\n");
-            fprintf(fichier, "\n\ntrue");
+            fprintf(fichier, "true");
          }
          fclose(fichier);
          fclose(verrouFile);

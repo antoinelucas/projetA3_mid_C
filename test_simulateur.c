@@ -3,6 +3,7 @@
 #include "simulateur.h"
 #include "consigne.h"
 #include "visualisationT.h"
+#include "visualisationC.h"
 
 #define CONSIGNE 0
 
@@ -48,7 +49,10 @@ int main(){
 
 	struct simParam_s*  monSimulateur_ps = simConstruct(temperature); // creation du simulateur, puissance intialis�e � 0%
 	int i=0; // increment de boucle
-	float puissance = 70.0; // puissance de chauffage
+	float puissance = 0.0; // puissance de chauffage
+
+	visualisationC(puissance);
+
 	for(i=0;i< 30;i++){
 		temperature=simCalc(puissance,monSimulateur_ps); // simulation de l'environnement
 	}

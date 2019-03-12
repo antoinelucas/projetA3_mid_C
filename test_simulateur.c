@@ -10,11 +10,11 @@
 
 int main(){
 	float csgn = 0;
-	char verif = ' ';
+	//char verif = ' ';
 	csgn = consigne(CONSIGNE);	// Appel à la fonction consigne pour récuperer la valeur de la consigne du fichier consigne
 	printf("Valeur de la consigne : %.2f \n", csgn);
 
-	FILE* myfile = fopen("trace.txt", "r");
+	/*FILE* myfile = fopen("trace.txt", "r");
 	int ch, number_of_lines = 0;
 
 	do {
@@ -36,11 +36,7 @@ int main(){
 	fclose(myfile);
 
 	printf("number of lines in test.txt = %d\n", number_of_lines);
-	printf("Value of verif : %d\n",verif);
-
-	
-
-	
+	printf("Value of verif : %d\n",verif);*/
 
 	temp_t temperature;
 	temperature.exterieure = 80.0;

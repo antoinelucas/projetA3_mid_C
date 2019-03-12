@@ -43,14 +43,14 @@ int main(){
 	
 
 	temp_t temperature;
-	temperature.exterieure = 80.0;
-	temperature.interieure = 20.0;
+	temperature.exterieure = 30.0;
+	temperature.interieure = 40.0;
 
 	visualisationT(temperature);
 
 	struct simParam_s*  monSimulateur_ps = simConstruct(temperature); // creation du simulateur, puissance intialis�e � 0%
 	int i=0; // increment de boucle
-	float puissance = 0.0; // puissance de chauffage
+	float puissance = 10.0; // puissance de chauffage
 
 	visualisationC(puissance);
 

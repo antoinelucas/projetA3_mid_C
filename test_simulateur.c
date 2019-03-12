@@ -13,6 +13,7 @@ int main(){
 	int i=0; // increment de boucle
 	float stamp1,stamp2,stamp3=0.0;
 	char* token;
+	
 	csgn = consigne(CONSIGNE);	// Appel à la fonction consigne pour récuperer la valeur de la consigne du fichier consigne
 	printf("Valeur de la consigne : %.2f \n", csgn);
 
@@ -57,15 +58,22 @@ int main(){
 
 	fclose(myfile);
 
+	printf("number of lines in test.txt = %d\n", number_of_lines);
+	printf("Value of verif : %d\n",verif);
+
+	
+
+	
 
 	temp_t temperature;
-	temperature.exterieure = 80.0;
-	temperature.interieure = 20.0;
+	temperature.exterieure = 30.0;
+	temperature.interieure = 40.0;
 
 	visualisationT(temperature);
 
 	struct simParam_s*  monSimulateur_ps = simConstruct(temperature); // creation du simulateur, puissance intialis�e � 0%
 	float puissance = 0.0; // puissance de chauffage
+
 
 	visualisationC(puissance);
 

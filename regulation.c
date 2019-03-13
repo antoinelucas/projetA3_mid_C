@@ -23,10 +23,10 @@
 		if(regul==1){
 			if(csgn>valueTemp){
 				cmd=40.0;
-			}else if(csgn<valueTemp){
+			}else{
 				cmd=0.0;
 			}
-		}else if(regul==2){
+		}else{
 			if(i!=0){
 				pid->previousI=pid->newI;
 				pid->newI=(csgn-valueTemp);

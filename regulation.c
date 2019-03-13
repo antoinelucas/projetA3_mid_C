@@ -1,5 +1,5 @@
 #include "regulation.h"
-	 
+
 float regulationTest(int regul,float csgn,float* tabT, int nT){
 	SPID * pid;
 	pid=malloc(1*sizeof(SPID));
@@ -17,20 +17,29 @@ float regulationTest(int regul,float csgn,float* tabT, int nT){
 	free(pid);
    return cmd;
 }
-    
-float regulation(int regul, float csgn, float valueTemp,SPID * pid,int i){
-	float cmd=0.0;
-	if(regul==1){
-		if(csgn>valueTemp){
-			cmd=40.0;
-		}else if(csgn<valueTemp){
-			cmd=0.0;
-		}
-	}else if(regul==2){
-		if(i!=0){
-			pid->previousI=pid->newI;
-			pid->newI=(csgn-valueTemp);
-			pid->valueI = pid->valueI + ((pid->previousI+pid->newI)*10)/2;
+
+	float regulation(int regul, float csgn, float valueTemp,SPID * pid,int i){
+		float cmd=0.0;
+		if(regul==1){
+			if(csgn>valueTemp){
+				cmd=40.0;
+			}else{
+				cmd=0.0;
+			}
+		}else{
+			if(i!=0){
+				pid->previousI=pid->newI;
+				pid->newI=(csgn-valueTemp);
+				pid->valueI = pid->valueI + ((pid->previousI+pid->newI)*10)/2;
+			}
+			pid->valueP=(csgn-valueTemp);
+			pid->valueD=(pid->previousV-pid->newV)/10;
+
+			cmd = pid->valueD*KD + pid->valueP*KP + pid->valueI*KI;
+
+			printf("/************ VALUE OF valueP :%f\n",pid->valueP*KP);
+			printf("/************ VALUE OF valueI :%f\n",pid->valueI*KI);
+			printf("/************ VALUE OF valueD :%f\n",pid->valueD*KD);
 		}
 		pid->valueP=(csgn-valueTemp);
 		pid->valueD=(pid->previousV-pid->newV)/10;
@@ -44,4 +53,3 @@ float regulation(int regul, float csgn, float valueTemp,SPID * pid,int i){
 	printf("/************ VALUE OF CMD :%f\n",cmd);
 	return cmd;
 }
-   

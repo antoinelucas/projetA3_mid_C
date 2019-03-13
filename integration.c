@@ -20,8 +20,8 @@ void integrationTest(int regul,temp_t tInit,int nIterations){
     scanf("%d", &regul);
 
     struct simParam_s*  monSimulateur_ps = simConstruct(temperature); // creation du simulateur, puissance intialisée à 0%
-
-    do{
+    
+    for(i=0;i<nIterations;i++){
         pid->newV=temperature.interieure;
 	    pid->newI=(csgn-temperature.interieure);
         visualisationT(temperature);
@@ -29,7 +29,7 @@ void integrationTest(int regul,temp_t tInit,int nIterations){
         cmd=regulation(regul,csgn,temperature.interieure,pid,i);
         visualisationC(cmd);
         temperature=simCalc(cmd,monSimulateur_ps); // simulation de l'environnement
-    }while(csgn>5);
+    }
 
     simDestruct(monSimulateur_ps); // destruction de simulateur
 }

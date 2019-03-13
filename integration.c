@@ -7,6 +7,7 @@
 
 void integrationTest(int regul,temp_t tInit,int nIterations){
     temp_t temperature;
+    temperature=tInit;
     float csgn,cmd=0.0;
     int i=0;
     
@@ -18,8 +19,6 @@ void integrationTest(int regul,temp_t tInit,int nIterations){
     scanf("%d", &regul);
 
     struct simParam_s*  monSimulateur_ps = simConstruct(temperature); // creation du simulateur, puissance intialisée à 0%
-    temperature.interieure=16.0;
-    temperature.exterieure=14.0;
 
     do{
         pid->newV=temperature.interieure;

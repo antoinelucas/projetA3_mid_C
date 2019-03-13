@@ -1,22 +1,27 @@
 #include "releve.h"
 
-void releve(temp_t *temperature){
+ FT_HANDLE initUSB(){
+    FT_HANDLE ftHandle;
+    FT_STATUS ftStatus;
+    ftStatus = FT_Open(0, &ftHandle);
+    if (ftStatus != FT_OK){
+        // FT_Open failed  return;
+    }
+    return ftHandle;
+}
+
+
+void releve(temp_t *temperature, FT_HANDLE ftHandle){
     int tempExtBytes = 0;
     float tempExtCelsius = 0;
     int tempIntBytes = 0;
     float tempIntCelsius = 0;
     int octet1 = 0;
-
-    FT_HANDLE ftHandle;
     FT_STATUS ftStatus;
     DWORD RxBytes = 6;
     DWORD BytesReceived;
     char RxBuffer[256];
 
-    ftStatus = FT_Open(0, &ftHandle);
-    if (ftStatus != FT_OK){
-        // FT_Open failed  return;
-    }
     ftStatus = FT_Read(ftHandle, RxBuffer, RxBytes, &BytesReceived);
     if (ftStatus == FT_OK){
         if (BytesReceived == RxBytes){
@@ -77,9 +82,11 @@ void releve(temp_t *temperature){
             temperature->interieure = tempIntCelsius;
         }
     }
-    else
-    {
+    else{
         // FT_Read Failed
     }
+}
+
+void finUSB(FT_HANDLE ftHandle){
     FT_Close(ftHandle);
 }

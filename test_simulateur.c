@@ -9,8 +9,7 @@
 #define CONSIGNE 0
 
 int main(){
-
-	temp_t temperature;
+	/*temp_t temperature;
 	temperature.exterieure = 14.0;
 	temperature.interieure = 15.0;
 	struct simParam_s*  monSimulateur_ps = simConstruct(temperature); // creation du simulateur, puissance intialisée à 0%
@@ -31,6 +30,6 @@ int main(){
 		temperature=simCalc(puissance,monSimulateur_ps); // simulation de l'environnement
 		integrationTest(2,temperature,i);
 	}
-	simDestruct(monSimulateur_ps); // destruction de simulateur
+	simDestruct(monSimulateur_ps); // destruction de simulateur*/
 	return EXIT_SUCCESS;
 }

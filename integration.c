@@ -3,27 +3,33 @@
 #include "visualisationT.h"
 #include "visualisationC.h"
 #include "consigne.h"
+#include "define.h"
 
 void integrationTest(int regul,temp_t tInit,int nIterations){
     temp_t temperature;
+    float csgn,cmd=0.0;
+    int i=0;
+    
     SPID * pid;
 	pid=malloc(1*sizeof(SPID));
-    float csgn=0.0;
-    float cmd=0.0;
-    int i=0;
+    pid->valueI=0;
 
-    csgn=consigne(CONSIGNE);
+    printf("TOR (1) or PID (2) ?\n");
+    scanf("%d", &regul);
 
-	pid->newV=temperature.interieure;
-	pid->newI=(csgn-temperature.interieure);
-	pid->valueI=0;
-    
-    for(i=0;i<nIterations;i++){
-        pid->previousV=pid->newV;
-		pid->newV=temperature.interieure;
+    struct simParam_s*  monSimulateur_ps = simConstruct(temperature); // creation du simulateur, puissance intialisée à 0%
+    temperature.interieure=16.0;
+    temperature.exterieure=14.0;
+
+    do{
+        pid->newV=temperature.interieure;
+	    pid->newI=(csgn-temperature.interieure);
         visualisationT(temperature);
-        cmd=regulation(regul,csgn,temperature.interieure,pid,i);
         csgn=consigne(CONSIGNE);
+        cmd=regulation(regul,csgn,temperature.interieure,pid,i);
         visualisationC(cmd);
-    }
+        temperature=simCalc(cmd,monSimulateur_ps); // simulation de l'environnement
+    }while(csgn>5);
+
+    simDestruct(monSimulateur_ps); // destruction de simulateur
 }

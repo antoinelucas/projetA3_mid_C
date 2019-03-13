@@ -1,7 +1,4 @@
 #include "visualisationC.h"
-#include <unistd.h>
-#include <stdio.h>
-#include <stdlib.h>
 
 void visualisationC(float puissance_f){
    FILE *fichier, *verrouFile = NULL;

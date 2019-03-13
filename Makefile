@@ -1,8 +1,8 @@
 CC=gcc
-EXEC=chauffage.exe
+EXEC=chauffageUSB.exe
 SRC=$(wildcard *.c)
 OBJ=$(SRC:.c=.o)
-LDFLAGS= 
+LDFLAGS= ./ftd2xx.lib
 CFLAGS=-Wall
 
 all: $(EXEC)
@@ -11,7 +11,7 @@ $(EXEC):$(OBJ)
 	@$(CC) -o $@ $^ $(LDFLAGS)
 
 %.o:%.c
-	@$(CC) -o $@ -c $< $(CFLAGS)
+	@$(CC) -o  $@ -c $< $(CFLAGS)
 
 .PHONY: clean
 

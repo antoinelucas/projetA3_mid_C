@@ -1,7 +1,4 @@
 #include "consigne.h"
-#include <unistd.h>
-#include <stdio.h>
-#include <stdlib.h>
 
 // Fonction qui permet de récupérer la valeur de la commande de chauffage du fichier consigne.txt
 float consigne(float csgn){

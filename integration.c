@@ -3,6 +3,7 @@
 #include "visualisationT.h"
 #include "visualisationC.h"
 #include "consigne.h"
+#include "simulateur.h"
 #include "define.h"
 
 void integrationTest(int regul,temp_t tInit,int nIterations){
@@ -24,7 +25,7 @@ void integrationTest(int regul,temp_t tInit,int nIterations){
         pid->newV=temperature.interieure;
 	    pid->newI=(csgn-temperature.interieure);
         visualisationT(temperature);
-        csgn=consigne(CONSIGNE);
+        csgn=consigne(csgn);
         cmd=regulation(regul,csgn,temperature.interieure,pid,i);
         visualisationC(cmd);
         temperature=simCalc(cmd,monSimulateur_ps); // simulation de l'environnement

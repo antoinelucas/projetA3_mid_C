@@ -4,4 +4,6 @@
 #include "define.h"
 #include "simulateur.h"
 
+#define CONSIGNE 0
+
 void integrationTest(int regul,temp_t tInit,int nIterations);

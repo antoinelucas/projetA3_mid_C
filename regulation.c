@@ -14,6 +14,7 @@
 			pid->newV=tabT[i];
          cmd=regulation(regul,csgn,tabT[i],pid,i);
       }
+		free(pid);
       return cmd;
    }
     
@@ -35,7 +36,14 @@
 			pid->valueD=(pid->previousV-pid->newV)/10;
 
 			cmd = pid->valueD*KD + pid->valueP*KP + pid->valueI*KI;
+
+			printf("/************ VALUE OF valueP :%f\n",pid->valueP*KP);
+			printf("/************ VALUE OF valueI :%f\n",pid->valueI*KI);
+			printf("/************ VALUE OF valueD :%f\n",pid->valueD*KD);
 		}
+
+		printf("/************ VALUE OF CMD :%f\n",cmd);
+
 		return cmd;
 	}
    

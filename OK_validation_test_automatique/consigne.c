@@ -10,8 +10,6 @@ float consigne(float csgn){
       if (fichier != NULL){
          fscanf(fichier, "%f", &csgn); // Lit la première valeur du fichier
          fclose(fichier);
-      }else{
-         printf("Impossible d'ouvrir le fichier consigne.txt");
       }
    }
    return csgn;

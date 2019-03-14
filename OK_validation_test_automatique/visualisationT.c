@@ -3,7 +3,7 @@
 void visualisationT(temp_t myTemp){
     FILE *fichier, *verrouFile = NULL;
     float tempExt, tempInt;
-    char* chaine = malloc(8*sizeof(char));
+    char* chaine = malloc(8 * sizeof(char));
 
     if (access(".verrouData", F_OK) == -1){ // On vérifie que le fichier data.txt est pas déjà en lecture
         verrouFile = fopen(".verrouData", "w");
@@ -18,8 +18,8 @@ void visualisationT(temp_t myTemp){
         if (fichier != NULL){
             fprintf(fichier, "%.2f\n%.2f\n%s", myTemp.exterieure, myTemp.interieure, chaine);
             fclose(fichier);
-            fclose(verrouFile);
-            remove(".verrouData");
         }
+        fclose(verrouFile);
+        remove(".verrouData");
     }
 }

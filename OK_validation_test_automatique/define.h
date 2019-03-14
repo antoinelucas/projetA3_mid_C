@@ -8,11 +8,6 @@
 //#include <windows.h>
 #include <math.h>
 
-
-#define KP 1
-#define KI 0.1
-#define KD 0.1
-
 typedef struct{
 	float interieure;
 	float exterieure;

@@ -19,6 +19,9 @@ float regulationTest(int regul,float csgn,float* tabT, int nT){
 }
 
 	float regulation(int regul, float csgn, float valueTemp,SPID * pid,int i){
+		float KP=1;
+		float KD=0.1;
+		float KI=0.1;
 		float cmd=0.0;
 		if(regul==1){
 			if(csgn>valueTemp){

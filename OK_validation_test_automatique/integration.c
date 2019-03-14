@@ -16,8 +16,8 @@ void integrationTest(int regul,temp_t tInit,int nIterations){
 	pid=malloc(1*sizeof(SPID));
     pid->valueI=0;
 
-    printf("TOR (1) or PID (2) ?\n");
-    scanf("%d", &regul);
+   /* printf("TOR (1) or PID (2) ?\n");
+    scanf("%d", &regul);*/
 
     struct simParam_s*  monSimulateur_ps = simConstruct(temperature); // creation du simulateur, puissance intialisée à 0%
     

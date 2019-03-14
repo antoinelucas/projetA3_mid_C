@@ -22,11 +22,8 @@ void visualisationC(float puissance_f){
             fprintf(fichier, "%.2f\n%.2f\ntrue", tempExt, tempInt);
          }
          fclose(fichier);
-         fclose(verrouFile);
-         remove(".verrouData");
       }
-
-   }else{
-      printf("\n\n Le fichier data est déjà ouvert\n\n");
+      fclose(verrouFile);
+      remove(".verrouData");
    }
 }

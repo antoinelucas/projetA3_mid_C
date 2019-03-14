@@ -4,14 +4,9 @@
 #include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
-//#include "ftd2xx.h"
-//#include <windows.h>
+#include "ftd2xx.h"
+#include <windows.h>
 #include <math.h>
-
-
-#define KP 1
-#define KI 0.1
-#define KD 0.1
 
 typedef struct{
 	float interieure;

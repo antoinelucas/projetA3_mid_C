@@ -1,7 +1,6 @@
 #include "define.h"
 #include "releve.h"
 #include "commande.h"
-#include "integration.h"
 #include "regulation.h"
 #include "visualisationT.h"
 #include "visualisationC.h"

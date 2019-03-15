@@ -6,15 +6,10 @@ void commande(FT_HANDLE ftHandle, float cmd){
     // on utilise FT_WRITE
     FT_STATUS ftStatus;
     DWORD BytesWritten = 1;
-    char TxBuffer[1];// Contains data to write to device
-    printf("CMD : %f\n",cmd);
-    TxBuffer[0] = cmd*1.27;
-    printf("TxBuffer : %u\n",TxBuffer[0]);
+    char TxBuffer[1];           // Contient les valeurs à écrire sur la carte
+    printf("CMD : %f\n",cmd);   // Affiche la valeur de la puissance 
+    TxBuffer[0] = (cmd / 127) * 100;     // Permet d'avoir la puissance en pourcentage
+    printf("TxBuffer : %u\n",TxBuffer[0]);  // Affiche la valeur que l'on envoie à la carte
 
     ftStatus = FT_Write(ftHandle, TxBuffer, sizeof(TxBuffer), &BytesWritten);
-    if (ftStatus == FT_OK) {
-        // FT_Write OK
-    }else{
-        // FT_Write Failed
-    }
 }

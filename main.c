@@ -18,7 +18,7 @@ int main(){
     SPID *pid;
     pid = malloc(1 * sizeof(SPID));
     pid->valueI = 0;
-    int mode_PID = 2;
+    int mode_PID = 1;
 
 
     printf("TOR (1) or PID (2) ?\n");   // On demande à l'utilisateur de choisir entre le mode ToR ou PID

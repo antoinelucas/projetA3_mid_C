@@ -20,7 +20,6 @@ int main(){
     pid->valueI = 0;
     int mode_PID = 1;
 
-
     printf("TOR (1) or PID (2) ?\n");   // On demande à l'utilisateur de choisir entre le mode ToR ou PID
     scanf("%d", &regul);
     descr = initUSB(); // Initialise la connexion USB

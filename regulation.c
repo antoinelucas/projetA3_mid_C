@@ -13,17 +13,29 @@ float regulationTest(int regul,float csgn,float* tabT, int nT){
    for(i = 0; i < nT; i++){
 		pid->previousV = pid->newV; // on garde en mémoire la valeur de la température intérieure
 		pid->newV = tabT[i]; //on prend la nouvelle valeur de la température intérieure
-      cmd = regulation(regul,csgn,tabT[i],pid,i); //on retourne la valeur de la puissance
+      cmd = regulation(regul,csgn,tabT[i],pid,i,1); //on retourne la valeur de la puissance
    }
 	free(pid);
    return cmd;
 }
 
-float regulation(int regul, float csgn, float valueTemp,SPID * pid,int i){
-	float KP = 1; 
-	float KD = 0.1;
-	float KI = 0.1;
+float regulation(int regul, float csgn, float valueTemp,SPID * pid,int i,int mode_PID){
 	float cmd = 0.0;
+	float KP,KI,KD = 0.0;
+
+	switch(mode_PID){
+		case 1: // test unitaire
+			KP = 1; 
+			KI = 0.1;
+			KD = 0.1;
+			break;
+		case 2: // test pour l'intégration
+			KP = 12; 
+			KI = 0.12;
+			KD = 0.03;
+			break;
+	}
+
 	if(regul == 1){ // choix de la régulation TOR
 		if(csgn > valueTemp){
 			cmd = 40.0;
@@ -39,7 +51,7 @@ float regulation(int regul, float csgn, float valueTemp,SPID * pid,int i){
 		pid->valueP = (csgn - valueTemp); //calcule de l'erreur
 		pid->valueD = (pid->previousV - pid->newV) / 10; //on calcule la dérivée en utilisant la taux d'accroisement
 
-		cmd = pid->valueD * KD + pid->valueP * KP + pid->valueI * KI; // application de la formule pour calculer le PID
+		cmd = (pid->valueP * KP) + (pid->valueI * KI) + (pid->valueD * KD); // application de la formule pour calculer le PID
 	}
 	return cmd;
 }

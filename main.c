@@ -18,11 +18,12 @@ int main(){
     SPID *pid;
     pid = malloc(1 * sizeof(SPID));
     pid->valueI = 0;
-    int mode_PID = 1;
+    int mode_PID = 3;
 
     printf("TOR (1) or PID (2) ?\n");   // On demande à l'utilisateur de choisir entre le mode ToR ou PID
     scanf("%d", &regul);
     descr = initUSB(); // Initialise la connexion USB
+
 
     do{
         temperature = releve(temperature, descr);   // Récupère les valeurs de températures de la carte via USB
@@ -36,9 +37,10 @@ int main(){
 
         printf("%.2f Celsius Ext\n", temperature.exterieure);
         printf("%.2f Celsius Int\n\n\n", temperature.interieure);
-    }while( csgn > 5 && csgn <= 40);
+        printf("VALUE OF CONSIGNE : %f\n",csgn);
+    }while( csgn >= 5 && csgn <= 40); // la consigne doit varier entre 5 et 40 °C compris
 
-    free(pid);      // On libère l'espace réservé pour la structure SPID
     finUSB(descr);  // On ferme la liaison USB
+    free(pid);      // On libère l'espace réservé pour la structure SPID
     return 0;
 }

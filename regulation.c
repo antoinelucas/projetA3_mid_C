@@ -30,12 +30,17 @@ float regulation(int regul, float csgn, float valueTemp,SPID * pid,int i,int mod
 			KD = 0.1;
 			break;
 		case 2: // test pour l'intégration
-			KP = 12; 
+			KP = 13; 
 			KI = 0.12;
 			KD = 0.03;
 			break;
+		case 3: // test pour l'usb
+			KP = 15; 
+			KI = 2;
+			KD = 1;
+			break;
 		default:
-			KP = 1;
+			KP = 1; 
 			KI = 0.1;
 			KD = 0.1;
 			break;
@@ -57,6 +62,11 @@ float regulation(int regul, float csgn, float valueTemp,SPID * pid,int i,int mod
 		pid->valueD = (pid->previousV - pid->newV) / 10; //on calcule la dérivée en utilisant la taux d'accroisement
 
 		cmd = (pid->valueP * KP) + (pid->valueI * KI) + (pid->valueD * KD); // application de la formule pour calculer le PID
+	}
+	if(cmd > 100.00){
+		cmd = 100.00;
+	}else if(cmd < 0.0){
+		cmd = 0.0;
 	}
 	return cmd;
 }

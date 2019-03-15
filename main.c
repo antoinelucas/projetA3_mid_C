@@ -18,6 +18,7 @@ int main(){
     SPID *pid;
     pid = malloc(1 * sizeof(SPID));
     pid->valueI = 0;
+    int mode_PID = 2;
 
 
     printf("TOR (1) or PID (2) ?\n");   // On demande à l'utilisateur de choisir entre le mode ToR ou PID
@@ -30,7 +31,7 @@ int main(){
         pid->newI = (csgn - temperature.interieure);
         visualisationT(temperature);    // Permet de mettre les températures dans le fichier data.txt
         csgn = consigne(csgn);          // Permet de récupérer la valeur de consigne du fichier consigne.txt
-        cmd = regulation(regul, csgn, temperature.interieure, pid, i);  // Retourne la valeur de la puissance
+        cmd = regulation(regul, csgn, temperature.interieure, pid, i,mode_PID);  // Retourne la valeur de la puissance
         visualisationC(cmd);    // Ecrit dans data.txt si le chauffage est en route ou non
         commande(descr,cmd);    // Envoie la valeur de la puissance (en %) à la carte via USB
 

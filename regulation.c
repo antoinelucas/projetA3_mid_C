@@ -34,6 +34,11 @@ float regulation(int regul, float csgn, float valueTemp,SPID * pid,int i,int mod
 			KI = 0.12;
 			KD = 0.03;
 			break;
+		default:
+			KP = 1;
+			KI = 0.1;
+			KD = 0.1;
+			break;
 	}
 
 	if(regul == 1){ // choix de la régulation TOR

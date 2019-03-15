@@ -7,7 +7,7 @@ if(exist(filename,'file')==0)
 end
  fid = fopen(filename,'r');
  mat = fscanf(fid,'%f \t %f \t %f \t %f\n');
- fclose(fid);
+ fclose(fid);   
  
  %% reshape data
  data=transpose(reshape(mat,4,length(mat)/4));

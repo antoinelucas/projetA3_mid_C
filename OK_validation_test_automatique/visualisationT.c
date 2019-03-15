@@ -22,4 +22,4 @@ void visualisationT(temp_t myTemp){
         fclose(verrouFile);
         remove(".verrouData");
     }
-}
+}   
